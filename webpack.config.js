@@ -1,23 +1,25 @@
+var path = require('path')
 var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    debug: false,
+    devtool: "eval",
 
     // input
-    context: __dirname + '/src',
-    entry: {
-        javasript: './js/app.jsx',
-        html: './index.html',
-        // vendor: ['react','react-dom']
-    },
+    entry: [
+        'webpack-dev-server/client?http://localhost:8080',
+        'webpack/hot/only-dev-server',
+        './src/js/client.jsx'
+    ],
     resolve: {
         extensions: ['', '.js', '.jsx']
     },
 
     // output
     output: {
-        path: 'dist',
-        filename: 'app.js'
+        path: path.resolve(__dirname, '/dist'),
+        filename: '[name].js',
+        publicPath: '/'
     },
 
     // modules
@@ -27,29 +29,33 @@ module.exports = {
                 loaders: [
                     'react-hot',
                     'babel',
-                    'eslint-loader'
+                   'eslint-loader'
                 ],
                 exclude: /node_modules/
+            }, {
+                test: /\.sass$/,
+                loader: 'style!css!sass?sourceMap'
             },
-
             {
-                test: /\.html$/,
-                loader: 'file?name=[name].[ext]'
-            }
+                test: /.*\.(gif|png|jpe?g|svg)$/i,
+                loader: 'file-loader?name=[path][name].[ext]&context=./src'
+            },
+            {
+                test: /\.(eot|ttf|woff|woff2|svg)$/,
+                loader: 'file?name=fonts/[name].[ext]',
+                exclude: /img/
+              }
+
         ]
     },
+
     plugins: [
-        // new webpack.DefinePlugin({
-        //     'process.env':{
-        //       'NODE_ENV': JSON.stringify('production')
-        //     }
-        //   }),
-        // new webpack.optimize.UglifyJsPlugin({
-        // minimize: true,
-        //     compress:{
-        //       warnings: true
-        //     }
-        // }),
-        // new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"libs.js")
+
+        // index.html generation
+        new HtmlWebpackPlugin({
+            title: 'React boilerplate',
+            filename: 'index.html',
+            template: 'src/index.jst',
+        })
     ]
 }

@@ -2,3 +2,4 @@ dist/
 node_modules/
 .AppleDouble
 .DS_Store
+npm-debug.log

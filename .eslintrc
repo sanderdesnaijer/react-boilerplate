@@ -3,12 +3,14 @@
     "extends": ["airbnb"],
      "env": {
         "browser": true,
-        "es6": true
+        "es6": true,
+        'commonjs': true
     },
     "parserOptions": {
-        "ecmaVersion": 6,
+        "ecmaVersion": 7,
         "sourceType": "module",
         "ecmaFeatures": {
+            "experimentalObjectRestSpread": true,
             "jsx": true
         }
     },
@@ -25,5 +27,8 @@
         "strict": [0,"never"],
         "no-param-reassign" : 0,
         "no-console": [2,{allow: ["info","error"]}]
+    },
+     "settings": {
+         "import/resolver": "webpack"
     }
 }
