@@ -60,7 +60,7 @@ module.exports = {
         new ExtractTextPlugin('[name]-[chunkhash].css'),
         // index.html generation
         new HtmlWebpackPlugin({
-            title: 'Kaarties',
+            title: 'React boilerplate',
             filename: 'index.html',
             template: 'src/index.jst',
         }),
