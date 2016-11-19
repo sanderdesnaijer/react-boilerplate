@@ -2,21 +2,28 @@ var path = require('path')
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var packageJson = require('./package.json');
+
+function getVendorModules(){
+  var dependencies = packageJson.dependencies;
+  var list = [];
+  Object.keys(dependencies).forEach(function(el){
+    list.push(el)
+  });
+  return list;
+}
 
 module.exports = {
 
-    devtool: "sourcemap",
+    devtool: "cheap-source-map",
 
     entry: {
-        app: './src/js/client.jsx',
-        vendor: [
-            'react',
-            'react-dom',
-            'react-router'
-        ]
+        app: './src/client.jsx',
+        vendor: getVendorModules()
     },
 
     resolve: {
+        root: path.resolve(__dirname, 'src/app'),
         extensions: ['', '.js', '.jsx']
     },
 
@@ -30,7 +37,7 @@ module.exports = {
         loaders: [
             // babelify
             {
-                test: /\.jsx$/,
+                test: /\.jsx?$/,
                 loaders: ['babel'],
                 exclude: /node_modules/
             },
@@ -75,7 +82,8 @@ module.exports = {
             minimize: true,
             compress: {
                 warnings: true
-            }
+            },
+            sourceMap: false
         }),
         // split vendor
         new webpack.optimize.CommonsChunkPlugin("vendor", "libs-[chunkhash].js")

@@ -9,9 +9,10 @@ module.exports = {
     entry: [
         'webpack-dev-server/client?http://localhost:8080',
         'webpack/hot/only-dev-server',
-        './src/js/client.jsx'
+        './src/client.jsx'
     ],
     resolve: {
+        root: path.resolve(__dirname, 'src/app'),
         extensions: ['', '.js', '.jsx']
     },
 
@@ -25,32 +26,29 @@ module.exports = {
     // modules
     module: {
         loaders: [{
-                test: /\.jsx$/,
+                test: /\.jsx?$/,
                 loaders: [
-                    'react-hot',
+                  // 'react-hot',
                     'babel',
-                   'eslint-loader'
+                  'eslint-loader'
                 ],
                 exclude: /node_modules/
             }, {
                 test: /\.sass$/,
                 loader: 'style!css!sass?sourceMap'
-            },
-            {
+            }, {
                 test: /.*\.(gif|png|jpe?g|svg)$/i,
                 loader: 'file-loader?name=[path][name].[ext]&context=./src'
-            },
-            {
+            }, {
                 test: /\.(eot|ttf|woff|woff2|svg)$/,
                 loader: 'file?name=fonts/[name].[ext]',
                 exclude: /img/
-              }
+            }
 
         ]
     },
 
     plugins: [
-
         // index.html generation
         new HtmlWebpackPlugin({
             title: 'React boilerplate',
