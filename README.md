@@ -38,8 +38,3 @@ Start production task:
 $ npm run deploy
 ```
 for configuration see [./webpack-production.config.js](./webpack-production.config.js)
-
-
-#### To do
-- sass linting
-- server side rendering
