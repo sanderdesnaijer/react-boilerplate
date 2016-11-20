@@ -1,4 +1,3 @@
-***under development***
 ### React boilerplate
 
 Simple React boilerplate with webpack. Features:
@@ -27,7 +26,8 @@ Start development task:
 ```sh
 $ npm start
 ```
-and go to **[http://localhost:8080/](http://localhost:8080/)**
+and go to **[http://localhost:8080/](http://localhost:8080/)**.
+
 for configuration see [./webpack.config.js](./webpack.config.js)
 
 
