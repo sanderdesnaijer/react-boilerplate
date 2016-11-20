@@ -1,16 +1,17 @@
 import { createStore } from 'redux';
-import counter from 'reducers/counter';
+import rootReducer from './reducers';
 
-const store = () => {
-// const persistendData = loadState();
-// const middlewares = [];
+function configureStore(initialState) {
+  const store = createStore(rootReducer, initialState);
+  if (module.hot) {
+    // Enable Webpack hot module replacement for reducers
+    module.hot.accept('./reducers', () => {
+      const nextRootReducer = require('./reducers').default; // eslint-disable-line global-require
 
-  if (process.env.NODE_ENV !== 'production') {
-   // middlewares.push();
+      store.replaceReducer(nextRootReducer);
+    });
   }
-  return createStore(
-    counter
-  );
-};
 
-export default store;
+  return store;
+}
+export default configureStore;

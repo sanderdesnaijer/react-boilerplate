@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { increase } from 'actions/counter';
-import Layout from 'components/layout/Default';
+import { increase } from '../actions/counter';
+import Layout from '../components/layout/Default';
 
 @connect(
   state => ({
-    count: state.count,
+    counter: state.counter,
   }),
   { increase }
 )
@@ -13,7 +13,9 @@ import Layout from 'components/layout/Default';
 class Home extends Component {
   static propTypes = {
     increase: PropTypes.func,
+    counter:  PropTypes.shape({
     count: PropTypes.number,
+  }),
   }
   constructor(props) {
     super(props);
@@ -27,7 +29,7 @@ class Home extends Component {
   render() {
     return (
       <Layout>
-        <h2>{this.props.count}</h2>
+        <h2>{this.props.counter.count}</h2>
         <button onClick={this.increaseCounter}>Buttton</button>
       </Layout>
     );

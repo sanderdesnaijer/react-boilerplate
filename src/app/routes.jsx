@@ -1,5 +1,5 @@
-import App from 'components/App';
-import Home from 'containers/Home';
+import App from './components/App';
+import Home from './containers/Home';
 
 const routes = [
   {

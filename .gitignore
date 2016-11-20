@@ -1,5 +1,5 @@
-dist/
-node_modules/
-.AppleDouble
-.DS_Store
+dist
+node_modules
 npm-debug.log
+.DS_Store
+.AppleDouble
