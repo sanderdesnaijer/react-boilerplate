@@ -20,7 +20,7 @@ $ npm install
 ```
 ### Tasks
 
-##### Development:
+#### Development:
 Start development task:
 
 ```sh
@@ -31,7 +31,7 @@ and go to **[http://localhost:8080/](http://localhost:8080/)**.
 for configuration see [./webpack.config.js](./webpack.config.js)
 
 
-##### Production:
+#### Production:
 Start production task:
 
 ```sh
