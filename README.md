@@ -1,6 +1,6 @@
 ### React boilerplate
 
-Simple React boilerplate with webpack. Features:
+Simple React boilerplate, including some basic example code. Features:
 - Webpack development and production tasks
 - SASS loader
 - React Hot loader
