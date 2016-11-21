@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import Root from './app/components/Root';
+import Root from 'components/Root';
 
-require('./style/style.sass');
+require('style/style.sass');
 
 const rootEl = document.getElementById('root');
 ReactDOM.render(

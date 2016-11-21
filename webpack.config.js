@@ -10,7 +10,7 @@ module.exports = {
     './src/client',
   ],
   resolve: {
-    root: path.resolve(__dirname, 'src/app'),
+    root: [path.resolve(__dirname, 'src/app'), path.resolve(__dirname, 'src')],
     extensions: ['', '.js', '.jsx'],
   },
   output: {

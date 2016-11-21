@@ -1,6 +1,6 @@
 import React from 'react';
 
-const svg = require('../../../images/test.svg');
+const svg = require('images/test.svg');
 
 const Header = () => (
   <header className="main-header">

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { increase } from '../actions/counter';
-import Layout from '../components/layout/Default';
+import { increase } from 'actions/counter';
+import Layout from 'components/layout/Default';
 
 @connect(
   state => ({
